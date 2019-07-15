@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <pre>
+    <form action='http://localhost:3000/REG' method="POST">
+        <table style= table-layout:fixed width: 741px border="1">
+                <colgroup>
+                <col style="width: 201px">
+                <col style="width: 540px">
+                </colgroup>
+                  <tr>
+                    <td>이름</td>
+                    <td><input type="text" name="name" /></td>
+                  <tr>
+                    <td>주민등록번호</td>
+                    <td><input type="number" name="firstreg" maxlength=6 /> - <input type="password" name="backreg" maxlength=7 /></td>
+                  </tr>
+                  <tr>
+                    <td>생년월일</td>
+                    <td><input type="date" name="birth" /></td>
+                  </tr>
+                  <tr>
+                    <td>아이디</td>
+                    <td><input type="text" name="ID" maxlength="10" /></td>
+                  </tr>
+                  <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" name="pswd" minlength="6" maxlength="14" /> 영문/숫자 포함 6자 이상</td> 
+                  </tr>
+                  <tr>
+                    <td>비밀번호 확인</td>
+                    <td><input type="password" name="pswdcert" minlength="6" maxlength="14" /></td>
+                  </tr>
+                  <tr>
+                    <td>취미</td>
+                    <td>
+                        <select name="hobby" size=1>
+                        <option value="선택하세요" selected> 선택하세요 </option>
+                        <option value="게임"> 게임 </option>
+                        <option value="게임"> 게임 </option>
+                        <option value="게임"> 게임 </option>
+                        <option value="게임"> 게임 </option>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>이메일</td>
+                    <td>
+                        <input type="text" name="e-id" /> @ <input type="text" name="e-domain" /> <select name="e-domain" size=1><option value="직접입력" selected> 직접입력 </option></select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>주소</td>
+                    <td><input type="text" name="adrs" /><input type=button name="adrs search" value="주소찾기"><br>
+                        <input type="text" name="deadrs" value="상세주소" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>전화번호</td>
+                    <td><input type="text" name="phone" min="9" max="14" /></td>
+                  </tr>
+                  <tr>
+                    <td>핸드폰 번호</td>
+                    <td><input type="text" name="cellphone" min="9" max="14"/></td>
+                  </tr>
+                  <tr>
+                    <td>직업</td>
+                    <td><select name="job" size=1><option value="선택하세요" selected> 선택하세요 </option></select></td>
+                  </tr>
+                  <tr>
+                    <td>메일/sns 정보 수신</td>
+                    <td>
+                        <input type="radio" name="agg" value="수신" id="r1" checked /><label for="r1">수신</label>
+                        <input type="radio" name="dis" value="수신거부" id="r2" /><label for="r2">수신거부</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>회원종류</td>
+                    <td>
+                        <input type="radio" name="nor" value="일반회원" id="r1" /><label for="r1">일반회원</label>
+                        <input type="radio" name="com" value="기업회원" id="r2" /><label for="r2">기업회원</label>
+                        <input type="radio" name="gov" value="기관회원" id="r3" /><label for="r3">기관회원</label>
+                        <input type="radio" name="adm" value="관리자" id="r4" /><label for="r4">관리자</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>정보공개여부</td>
+                    <td><select name="agg/dis" size=1><option value="선택하세요" selected> 선택하세요 </option></select></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="text-align: center"><input type="submit" name="confirm" value="회원가입"> <input type=button name="cancel" value="취소"></td>
+                    <td></td>
+                  </tr>
+                </table>
+            </form>
+</body>
+</html>

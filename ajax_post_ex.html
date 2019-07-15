@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        
+    <script>
+
+        function serializeObject($form) {
+            var unindexed_array = $form.serializeArray();
+            var indexed_array = {};
+
+            $.map(unindexed_array, function (n, i) {
+                indexed_array[n['name']] = n['value'];
+            });
+
+            return indexed_array;
+        }
+        $(document).ready(function () {
+
+
+            $('#submit').click(function () {
+
+                let newData = serializeObject($('form[name=regform]'));;
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/regUser',
+                    dataType: 'json',
+                    data: newData,
+                    success: function (data) {
+                        console.log('success');
+                        console.log(data);
+                    },
+
+                    error: function (err) {
+                        console.log('err');
+                    }
+
+                });
+
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+<form name="regform">
+    <input type="text" name="name">
+    <input type="text" name="ID">
+    <button id="submit">sfsdf</button>
+</form>
+</body>
+
+</html>

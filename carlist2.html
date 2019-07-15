@@ -1,0 +1,122 @@
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #262626
+        }
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#submit').click(function () {
+                let searchText = $('#searchText').val();
+                let selectdata = $('.whatsrch').val();
+                let $target = $('#list');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/filter',
+                    dataType: 'json',
+                    data: {
+                        "filter": selectdata,
+                        "searchText": searchText
+                        // req.body.searchText
+                        // req.body.filter
+                    },
+                    success: function (data) {
+                        console.log('success');
+                        //target upadate
+                        $target.empty();
+                        if (selectdata === "carn") {
+                            $target.append(`
+                    <tr>
+                        <td>1</td>
+                        <td>${data.carNumber}</td>
+                        <td>${data.owner}</td>
+                        <td>${data.model}</td>
+                        <td>${data.company}</td>
+                        <td>${data.numOfAccident}</td>
+                        <td>${data.numOfOwnerChange}</td>
+                    </tr>
+                    `)
+                        } else {
+                            console.log(data);
+                            $.each(data, function (i, item) {
+                                console.log(item);
+                                $target.append(`
+                    <tr>
+                        <td>${i + 1}</td>
+                        <td>${item.carNumber}</td>
+                        <td>${item.owner}</td>
+                        <td>${item.model}</td>
+                        <td>${item.company}</td>
+                        <td>${item.numOfAccident}</td>
+                        <td>${item.numOfOwnerChange}</td>
+                    </tr>
+                    `);
+                            })
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class='container'>
+        <div class="jumbotron">
+
+            <h1>List</h1>
+            <select class="whatsrch">
+                <option value="carn">차량번호</option>
+                <option value="comp">제조사</option>
+            </select>
+            <input type="text" id="searchText">
+            <input type="button" id="submit" value="검색">
+        </div>
+        <table class="table table-striped" id="cartable" style="color: white">
+            <thead>
+                <tr>
+                    <th class="th-sm">No</th>
+                    <th>CarNumber</th>
+                    <th>Owner</th>
+                    <th>Model</th>
+                    <th>Company</th>
+                    <th>NuOfAccident</th>
+                    <th>NumOfOwnerChange</th>
+                </tr>
+            </thead>
+            <tbody id="list">
+                <% for (let i = 0 ; i<data.length; i++) { %>
+                <tr>
+                    <td><%= (i+1)  %></td>
+                    <td><%= data[i].carNumber  %></td>
+                    <td><%= data[i].owner  %></td>
+                    <td><%= data[i].model  %></td>
+                    <td><%= data[i].company  %></td>
+                    <td><%= data[i].numOfAccident  %></td>
+                    <td><%= data[i].numOfOwnerChange  %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

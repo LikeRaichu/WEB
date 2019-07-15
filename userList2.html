@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<style>
+
+body {
+    background-color: #262626;
+}
+
+</style>
+
+</head>
+<body>
+<div class='container'>
+    <div class="jumbotron">
+            <h1>List</h1>
+        </div>
+        <table class="table table-striped" id="cartable" style="color: white">
+                <thead>
+                    <tr>
+                    <th class="th-sm">No</th>
+                    <th>name</th>
+                    <th>nickname</th>
+                    <th>phone</th>
+                    <th>address</th>
+                    </tr>
+                </thead>
+                <tbody id="list">
+                    <% for (let i=0; i<data2.length; i++) { %>
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><%= data2[i].name%></td>
+                            <td><%= data2[i].nickname%></td>
+                            <td><%= data2[i].phone%></td>
+                            <td><%= data2[i].address%></td>
+                        </tr>
+                    <% } %>
+                </tbody>   
+            </table>
+        </div>
+        <div>
+            <input type="text" >
+        </div>
+</body>
+</html>

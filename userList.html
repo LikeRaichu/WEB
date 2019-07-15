@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<style>
+
+body {
+    background-color: #262626;
+}
+
+</style>
+
+<script>
+        $(function() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/userList',
+                success: function(data) {
+                    console.log('success');
+                    console.log(data);
+
+                    $.each (data, function(i, item) {
+                        $('#list').append (
+                        `
+                        <tr><td> ${i + 1} </td>
+                        <td> ${item.name} </td>
+                        <td> ${item.nickname} </td>
+                        <td> ${item.phone} </td>
+                        <td> ${item.address} </td></tr>`
+                        )
+                    });
+                   
+                },
+                error: function(err) {
+                    console.log('err');
+                }
+            });
+        });
+            </script>
+
+</head>
+<body>
+<div class='container'>
+    <div class="jumbotron">
+            <h1>List</h1>
+        </div>
+        <table class="table table-striped" id="cartable" style="color: white">
+                <thead>
+                    <tr>
+                    <th class="th-sm">No</th>
+                    <th>name</th>
+                    <th>nickname</th>
+                    <th>phone</th>
+                    <th>address</th>
+                    </tr>
+                </thead>
+                <tbody id="list">
+ 
+                </tbody>   
+            </table>
+        </div>
+</body>
+</html>
